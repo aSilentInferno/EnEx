@@ -1,0 +1,54 @@
+Enzyklopädie-Expedition	
+
+Sprache: Deutsch
+
+- Startknopf
+- Verlauf (Pfaddiagramm)
+- Counter (der besuchten Seiten)
+- Startwebside
+- zufällige Zielwebsite (dauerhaft angezeigt)
+- Ideallösungsfindung
+- Belohnungssystem nach dem Spiel
+
+Noah: 		Ideallösung
+Moritz:		GUI (grafische Benutzeroberfläche)
+Kai: 		API (Technische Umsetzung) 
+Clemens: 	Rest (übrige Spielfunktionen, logische Funktionen, Pfaddiagramm)
+
+Clemens: Counter, Pfaddiagramm, (Timer)
+
+
+
+
+
+Allgemeine Beschreibung:
+
+Auf der Suche nach dem gewünschten Wikipedia Artikel verlief sich der nichtsahnende Benutzer 
+in eine Fülle an interresanten, aber nicht gesuchten Artikel. Verzweifelt durchstreift er das Dickicht
+der Wikipedia und ahnt nicht, dass er beobachtet wird...
+Nun sind Sie gefragt: 
+Können Sie ihm helfen oder sind Sie genauso verloren?
+Finden Sie den schnellsten Weg aus dem Artikeljungel oder sterben Sie an sozialer Einsamkeit?
+
+Dieses Spiel ist nichts für schwache Nerven. Sollten Sie durch ähnliche Situationen vorbelastet
+sein, empfehlen wir Ihnen, temporäre Spielpausen einzulegen.
+
+Bei unserem Spiel wird dem Benutzer ein zufälliger Wikipedia Artikel angezeigt, von dem er durch die eingebetteten
+Links auf der Website hin zur Zielwebsite navigieren muss. Dabei darf er die Suchfunktionen u. Ä. nicht benutzen. 
+Ziel ist es also, möglichts schnell, sprich effektiv, ans Ziel zu kommen. 
+Dabei stellt einem unser Programm Hilfen, wie einen Suchverlauf, spirch Pfaddiagramm und die Optimallösung zur Seite.
+Außerdem bewertet es anschließend deinen Pfad und gibt eine Bewertung ab. 
+Doch es ist Vorsicht geboten: Bei extravaganter Schlechtleistung kann unser Produkt Ihnen zu einem verfrühten Ableben verleiten.
+
+
+
+Elevator-Pitch (Kurzer 1min Vortrag):
+- Kunde: Gelangweilter Mensch
+- Problem: Verzweiflung an der Hässlichkeit der Wikipedia, fehlende spezifische Funktionen
+- Name der Idee: Enzyklopädie-Expedition
+- Kategorie: Webgame
+- Vorteil: Counter, Stoppuhr, Ideallösung (einfach überlegen), deutsch
+- Wettbewerber: Wikipedia (The Wiki Game), hässliche Menschen aus dem INF GK
+- Einzigartigkeit: Zeiteintelibarkeit, Kostenunintensiv, überlegen, einzigartig
+
+ 
