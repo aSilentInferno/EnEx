@@ -5,7 +5,7 @@ Sprache: Deutsch
 - Startknopf
 - Verlauf (Pfaddiagramm)
 - Counter (der besuchten Seiten)
-- Startwebside
+- Startwebsite
 - zufällige Zielwebsite (dauerhaft angezeigt)
 - Ideallösungsfindung
 - Belohnungssystem nach dem Spiel
@@ -23,7 +23,7 @@ Clemens: Counter, Pfaddiagramm, (Timer)
 
 Allgemeine Beschreibung:
 
-Auf der Suche nach dem gewünschten Wikipedia Artikel verlief sich der nichtsahnende Benutzer 
+Auf der Suche nach dem gewünschten Wikipedia-Artikel verlief sich der nichtsahnende Benutzer 
 in eine Fülle an interresanten, aber nicht gesuchten Artikel. Verzweifelt durchstreift er das Dickicht
 der Wikipedia und ahnt nicht, dass er beobachtet wird...
 Nun sind Sie gefragt: 
@@ -33,12 +33,12 @@ Finden Sie den schnellsten Weg aus dem Artikeljungel oder sterben Sie an soziale
 Dieses Spiel ist nichts für schwache Nerven. Sollten Sie durch ähnliche Situationen vorbelastet
 sein, empfehlen wir Ihnen, temporäre Spielpausen einzulegen.
 
-Bei unserem Spiel wird dem Benutzer ein zufälliger Wikipedia Artikel angezeigt, von dem er durch die eingebetteten
+Bei unserem Spiel wird dem Benutzer ein zufälliger Wikipedia-Artikel angezeigt, von dem er durch die eingebetteten
 Links auf der Website hin zur Zielwebsite navigieren muss. Dabei darf er die Suchfunktionen u. Ä. nicht benutzen. 
-Ziel ist es also, möglichts schnell, sprich effektiv, ans Ziel zu kommen. 
-Dabei stellt einem unser Programm Hilfen, wie einen Suchverlauf, spirch Pfaddiagramm und die Optimallösung zur Seite.
+Ziel ist es also, möglichst schnell, sprich effektiv, ans Ziel zu kommen. 
+Dabei stellt einem unser Programm Hilfen, wie einen Suchverlauf, sprich Pfaddiagramm und die Optimallösung zur Seite.
 Außerdem bewertet es anschließend deinen Pfad und gibt eine Bewertung ab. 
-Doch es ist Vorsicht geboten: Bei extravaganter Schlechtleistung kann unser Produkt Ihnen zu einem verfrühten Ableben verleiten.
+Doch es ist Vorsicht geboten: Bei extravaganter Schlechtleistung kann unser Produkt Sie zu einem verfrühten Ableben verleiten.
 
 
 
@@ -49,6 +49,6 @@ Elevator-Pitch (Kurzer 1min Vortrag):
 - Kategorie: Webgame
 - Vorteil: Counter, Stoppuhr, Ideallösung (einfach überlegen), deutsch
 - Wettbewerber: Wikipedia (The Wiki Game), hässliche Menschen aus dem INF GK
-- Einzigartigkeit: Zeiteintelibarkeit, Kostenunintensiv, überlegen, einzigartig
+- Einzigartigkeit: Zeiteinteilbarkeit, Kostenunintensiv, überlegen, einzigartig
 
  
