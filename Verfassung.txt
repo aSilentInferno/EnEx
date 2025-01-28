@@ -10,7 +10,7 @@ Sprache: Deutsch
 - Ideallösungsfindung
 - Belohnungssystem nach dem Spiel
 
-Noah: 		Ideallösung - hilfestellung durch tips wie seperation vom ziel?
+Noah: 		Ideallösung - Hilfestellung durch Tipps wie seperation vom Ziel?
 Moritz:		GUI (grafische Benutzeroberfläche)
 Kai: 		API (Technische Umsetzung) 
 Clemens: 	Rest (übrige Spielfunktionen, logische Funktionen, Pfaddiagramm)
