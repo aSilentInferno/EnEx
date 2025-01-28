@@ -1,6 +1,8 @@
 # EnEx
 ## A Path Travesal Game with Wikipedia Winks
 
+[auch auf deutsch erhältlich](README.md)
+
 <!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
 
 - [What is EnEx](#what-is-EnEx)
@@ -18,7 +20,7 @@ EnEx is a game in which you are given a start Wikipedia page and need to find a 
 Because this game was made as a school project, it only features the German language for both the game and Wikipedia - feel free to fork and translate it. 
 
 <!-- TOC --><a name="how-to-playgamerules"></a>
-## how to play/gamerules
+## How to Play/Gamerules
 Depending on the game rules you selected prior to playing, you either start with a random or a specific Wikipedia page and need to find the shortest path to the either randomly or manually chosen target page. You do this by clicking links on pages until you find the target page or, if enabled, the time is up. If you ever want to go back, EnEx includes a path tree of pages you have discoverd and the distance from the start to said page. Once you found a path EnEx will give you a score based on the amount of steps your (shortest) solution has and the time you took to find it. It will also show *one* ¹ ideal solution as an example. 
 
 
