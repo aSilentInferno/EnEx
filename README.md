@@ -15,7 +15,6 @@
 
 <!-- TOC --><a name="what-is-EnEx"></a>
 ## Was ist EnEx
-EnEx is a game in which you are given a start Wikipedia page and need to find a way to get to another given Wikipedia page only using the links on the page itself with the least possible steps. 
 EnEx ist ein Spiel, bei dem du eine Wikipedia-Seite als Startpunkt erhältst und einen Weg finden musst, um zu einer anderen vorgegebenen Wikipedia-Seite zu gelangen, indem du nur die Links auf der aktuellen Seite verwendest. Ziel ist es, dafür möglichst wenige Schritte zu verwenden. 
 
 Da dieses Spiel als Schulprojekt entstanden ist, ist es momentan nur in deutscher Sprache erhältlich - du darfst es gerne forken und in andere Sprachen übersetzen. 
