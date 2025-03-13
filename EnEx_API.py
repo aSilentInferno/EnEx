@@ -1,4 +1,4 @@
-# v 0.1
+# v 0.1.1
 # 2025-03-13
 
 import requests  # Importiert das requests-Modul für HTTP-Anfragen
@@ -17,9 +17,19 @@ headers = {
 
 class Wikipedia:
     def __init__(self, name: str):
+        """
+        Initialisiert eine neue Instanz der Wikipedia-Klasse.
+
+        :param name: Der Name der Wikipedia-Seite.
+        """
         self.name = name  # Setzt den Namen der Wikipedia-Seite
         self.url = 'https://api.wikimedia.org/core/v1/wikipedia/en/page/' + self.name + '/html'  # Setzt die URL für die API-Anfrage
 
-    def fetch(self): # Holt die HTML-Datei der Wikipedia-Seite
+    def fetch(self):
+        """
+        Holt die HTML-Datei der Wikipedia-Seite mittels einer API-Anfrage.
+
+        :return: Der Text der Antwort der API-Anfrage.
+        """
         response = requests.get(self.url, headers=headers)  # Führt eine GET-Anfrage an die API durch
         return response.text  # Gibt den Text der Antwort zurück
