@@ -1,5 +1,5 @@
 ## Autor: Clemens Stein
-## Funktionen: Stoppuhr, Punktecounter, Titelextrahierung
+## Funktionen: Stoppuhr, Random Wiki URL, Punktecounter, Titelextrahierung
 
 
 from urllib.parse import urlparse, unquote
