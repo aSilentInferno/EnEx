@@ -1,6 +1,6 @@
 import pytest
 import time
-from stoppuhr import Stoppuhr  # Angenommen, die Klasse ist in einer Datei namens stoppuhr.py
+from Grundfunktione.pyn import Stoppuhr  # Angenommen, die Stoppuhr-Klasse ist in der Datei Grundfunktionen.py
 
 def test_stoppuhr_start():
     """Testet, ob die Stoppuhr korrekt startet."""
