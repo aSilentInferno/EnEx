@@ -21,6 +21,9 @@ Dabei stellt einem unser Programm Hilfen, wie einen Suchverlauf, sprich Pfaddiag
 Außerdem bewertet es anschließend deinen Pfad und gibt eine Bewertung ab. 
 Doch es ist Vorsicht geboten: Bei extravaganter Schlechtleistung kann unser Produkt Sie zu einem verfrühten Ableben verleiten.
 
+Die Bewertung wird dabei durch eine negative Expotentialfunktion beschrieben, wobei 10.000 Punkte die höchstmögliche Punktzahl ist
+Dies hat den Vorteil, dass der Unterschied zwischen z.B. 2 und 3 nominal verherender ist, als zwischen z.B. 7 und 8.
+
 ### Musskriterien
 
 - Einwandfreie, effektive und effiziente Funktionsweise
