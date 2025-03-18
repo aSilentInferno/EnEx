@@ -10,6 +10,9 @@ load_dotenv()
 
 api_token = os.getenv("WIKI_ACCESS_TOKEN")
 
+if api_token is None:
+    raise ValueError("WIKI_ACCESS_TOKEN environment variable is not set")
+
 headers = {
         'Authorization': 'Bearer ' + api_token,
         'User-Agent': 'EnEx (kajwich@icloud.com)'
@@ -37,9 +40,7 @@ def _get_inbound_links(name: str):
     """
     url = 'https://de.wikipedia.org/w/api.php?action=query&format=json&uselang=de&list=backlinks&formatversion=2&bltitle=' + name
     response = requests.get(url)
-    json_data = json.loads(response.text)
-    linklist = [page['title'] for page in json_data['query']['pages']]
-    return linklist
+    return response.json()
 
 def _get_outbound_links(name: str):
     """
