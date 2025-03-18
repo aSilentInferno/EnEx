@@ -14,7 +14,7 @@ class Wikipedia:
 
         def __init__(self, titel):
                 self.titel = titel
-                self.link = 'https://api.wikimedia.org/core/v1/wikipedia/en/page/' + self.name + '/html'
+                self.link = 'https://api.wikimedia.org/core/v1/wikipedia/en/page/' + self.titel + '/html'
                 self.inhalt = ""
                 self.ausgehendeLinks = []
                 self.eingehendeLinks = []

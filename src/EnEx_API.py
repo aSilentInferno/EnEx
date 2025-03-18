@@ -28,23 +28,25 @@ def get_wiki_page(name: str):
     wiki.inhalt = response.text
     return wiki
 
-def get_inbound_links(name: str):
+def _get_inbound_links(name: str):
     """
     Holt die eingehenden Links einer Wikipedia-Seite mittels einer API-Anfrage.
 
     :param name: Der Name der Wikipedia-Seite.
-    :return: Die Antwort der API-Anfrage als JSON-Objekt
+    :return: Die Antwort der API-Anfrage als Liste
     """
     url = 'https://de.wikipedia.org/w/api.php?action=query&format=json&uselang=de&list=backlinks&formatversion=2&bltitle=' + name
     response = requests.get(url)
-    return response.json()
+    json_data = json.loads(response.text)
+    linklist = [page['title'] for page in json_data['query']['pages']]
+    return linklist
 
-def get_outbound_links(name: str):
+def _get_outbound_links(name: str):
     """
     Holt die ausgehenden Links einer Wikipedia-Seite mittels einer API-Anfrage.
 
     :param name: Der Name der Wikipedia-Seite.
-    :return: Die Antwort der API-Anfrage als JSON-Objekt
+    :return: Die Antwort der API-Anfrage als Liste
     """
     url = 'https://de.wikipedia.org/w/api.php?action=query&prop=links&titles=' + name + '&pllimit=max&format=json'
     response = requests.get(url)
@@ -57,9 +59,11 @@ def get_wiki_links(name: str):
     :param name: Der Name der Wikipedia-Seite.
     :return: Die eingehenden und ausgehenden Links als JSON-Objekt
     """
-    inbound_links = json.loads(get_inbound_links(name))
-    outbound_links = json.loads(get_outbound_links(name))
+    inbound_links = json.loads(_get_inbound_links(name))
+    outbound_links = json.loads(_get_outbound_links(name))
     wiki = Wikipedia(name)
     wiki.inbound_links = inbound_links
     wiki.outbound_links = outbound_links
     return wiki
+
+print(_get_inbound_links('Berlin'))
