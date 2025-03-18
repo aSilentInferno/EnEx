@@ -4,11 +4,14 @@ import json
 import requests
 import os
 from dotenv import load_dotenv
-from Wikipedia import Wikipedia
+from wikipedia import Wikipedia
 
 load_dotenv()
 
 api_token = os.getenv("WIKI_ACCESS_TOKEN")
+
+if api_token is None:
+    raise ValueError("WIKI_ACCESS_TOKEN environment variable is not set")
 
 headers = {
         'Authorization': 'Bearer ' + api_token,
@@ -28,23 +31,23 @@ def get_wiki_page(name: str):
     wiki.inhalt = response.text
     return wiki
 
-def get_inbound_links(name: str):
+def _get_inbound_links(name: str):
     """
     Holt die eingehenden Links einer Wikipedia-Seite mittels einer API-Anfrage.
 
     :param name: Der Name der Wikipedia-Seite.
-    :return: Die Antwort der API-Anfrage als JSON-Objekt
+    :return: Die Antwort der API-Anfrage als Liste
     """
     url = 'https://de.wikipedia.org/w/api.php?action=query&format=json&uselang=de&list=backlinks&formatversion=2&bltitle=' + name
     response = requests.get(url)
     return response.json()
 
-def get_outbound_links(name: str):
+def _get_outbound_links(name: str):
     """
     Holt die ausgehenden Links einer Wikipedia-Seite mittels einer API-Anfrage.
 
     :param name: Der Name der Wikipedia-Seite.
-    :return: Die Antwort der API-Anfrage als JSON-Objekt
+    :return: Die Antwort der API-Anfrage als Liste
     """
     url = 'https://de.wikipedia.org/w/api.php?action=query&prop=links&titles=' + name + '&pllimit=max&format=json'
     response = requests.get(url)
@@ -57,8 +60,8 @@ def get_wiki_links(name: str):
     :param name: Der Name der Wikipedia-Seite.
     :return: Die eingehenden und ausgehenden Links als JSON-Objekt
     """
-    inbound_links = list(get_inbound_links(name).values())
-    outbound_links = list(get_outbound_links(name).values())
+    inbound_links = json.loads(_get_inbound_links(name))
+    outbound_links = json.loads(_get_outbound_links(name))
     wiki = Wikipedia(name)
     wiki.inbound_links = inbound_links
     wiki.outbound_links = outbound_links
