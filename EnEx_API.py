@@ -1,4 +1,4 @@
-# v 0.2
+# v 0.2.1
 
 import json
 import requests
@@ -57,8 +57,8 @@ def get_wiki_links(name: str):
     :param name: Der Name der Wikipedia-Seite.
     :return: Die eingehenden und ausgehenden Links als JSON-Objekt
     """
-    inbound_links = json.loads(get_inbound_links(name))
-    outbound_links = json.loads(get_outbound_links(name))
+    inbound_links = list(get_inbound_links(name).values())
+    outbound_links = list(get_outbound_links(name).values())
     wiki = Wikipedia(name)
     wiki.inbound_links = inbound_links
     wiki.outbound_links = outbound_links
