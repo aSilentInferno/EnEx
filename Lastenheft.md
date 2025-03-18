@@ -4,7 +4,22 @@
 
 ### Produktbeschreibung
 
-EnEx ist ein Spiel, bei dem du eine Wikipedia-Seite als Startpunkt erhältst und einen Weg finden musst, um zu einer anderen vorgegebenen Wikipedia-Seite zu gelangen, indem du nur die Links auf der aktuellen Seite verwendest. Ziel ist es, dafür möglichst wenige Schritte zu verwenden. <!-- README, Z. 18 -->
+Auf der Suche nach dem gewünschten Wikipedia-Artikel verlief sich der nichtsahnende Benutzer 
+in eine Fülle an interresanten, aber nicht gesuchten Artikel. Verzweifelt durchstreift er das Dickicht
+der Wikipedia und ahnt nicht, dass er beobachtet wird...
+Nun sind Sie gefragt: 
+Können Sie ihm helfen oder sind Sie genauso verloren?
+Finden Sie den schnellsten Weg aus dem Artikeljungel oder sterben Sie an sozialer Einsamkeit?
+
+Dieses Spiel ist nichts für schwache Nerven. Sollten Sie durch ähnliche Situationen vorbelastet
+sein, empfehlen wir Ihnen, temporäre Spielpausen einzulegen.
+
+Bei unserem Spiel wird dem Benutzer ein zufälliger Wikipedia-Artikel angezeigt, von dem er durch die eingebetteten
+Links auf der Website hin zur Zielwebsite navigieren muss. Dabei darf er die Suchfunktionen u. Ä. nicht benutzen. 
+Ziel ist es also, möglichst schnell, sprich effektiv, ans Ziel zu kommen. 
+Dabei stellt einem unser Programm Hilfen, wie einen Suchverlauf, sprich Pfaddiagramm und die Optimallösung zur Seite.
+Außerdem bewertet es anschließend deinen Pfad und gibt eine Bewertung ab. 
+Doch es ist Vorsicht geboten: Bei extravaganter Schlechtleistung kann unser Produkt Sie zu einem verfrühten Ableben verleiten.
 
 ### Musskriterien
 
