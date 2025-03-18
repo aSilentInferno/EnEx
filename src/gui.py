@@ -1,3 +1,5 @@
+# v 0.1
+
 import webview
 from enex_api import get_wiki_page
 
