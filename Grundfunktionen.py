@@ -118,13 +118,14 @@ def normal_counter (list):
 
     """
     Entwickelt eine Gesamtpunktzahl der Runde
+    10.000 ist dabei die höchstmögliche Punktzahl
     
     param list: Die Liste der aufgerufenen URLs
     return: Gibt eine ganzzahlige Punktzahl zurück
     """
     
     p1 = len(list)
-    points = 1.1 ** (- len(list)) * 10000
+    points = 1.1 ** (- len(list) + 1) * 10000
 
     return int(points)
 
