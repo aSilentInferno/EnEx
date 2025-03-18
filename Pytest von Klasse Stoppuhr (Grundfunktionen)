@@ -1,0 +1,36 @@
+import pytest
+import time
+from stoppuhr import Stoppuhr  # Angenommen, die Klasse ist in einer Datei namens stoppuhr.py
+
+def test_stoppuhr_start():
+    """Testet, ob die Stoppuhr korrekt startet."""
+    stopwatch = Stoppuhr()
+    stopwatch.start()
+    time.sleep(2)
+    assert stopwatch.get_zeit() >= 2  # Mindestens 2 Sekunden sollten vergangen sein
+    stopwatch.stop()
+
+def test_stoppuhr_stop():
+    """Testet, ob die Stoppuhr nach dem Stoppen keine Zeit mehr zählt."""
+    stopwatch = Stoppuhr()
+    stopwatch.start()
+    time.sleep(2)
+    stopwatch.stop()
+    time_before = stopwatch.get_zeit()
+    time.sleep(2)
+    time_after = stopwatch.get_zeit()
+    assert time_before == time_after  # Die Zeit sollte sich nicht mehr verändern
+
+def test_stoppuhr_reset():
+    """Testet, ob die Stoppuhr beim Neustart zurückgesetzt wird."""
+    stopwatch = Stoppuhr()
+    stopwatch.start()
+    time.sleep(2)
+    stopwatch.stop()
+    stopwatch.start()
+    time.sleep(1)
+    assert stopwatch.get_zeit() <= 2  # Sollte nach Neustart nahe bei 1-2 Sekunden sein
+    stopwatch.stop()
+
+if __name__ == "__main__":
+    pytest.main()
