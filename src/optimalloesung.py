@@ -1,7 +1,7 @@
 from collections import deque
 import time
-from Wikipedia import *
-from EnEx_API import *
+from wikipedia import Wikipedia
+from EnEx_API import get_wiki_links
 
 def bidirectional_bfs_wikipedia(start, goal):
     """
