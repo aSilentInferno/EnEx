@@ -4,7 +4,7 @@ import json
 import requests
 import os
 from dotenv import load_dotenv
-from Wikipedia import Wikipedia
+from wikipedia import Wikipedia
 
 load_dotenv()
 
