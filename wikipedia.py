@@ -1,11 +1,11 @@
-Das Wikiepdia Objekt zum Speichern von der Wikiedialinks
+# Das Wikipedia Objekt zum Speichern von der Wikipedialinks
 
 class Wikipedia:
 
-def __init__(titel):
-self.titel = titel
+    def __init__(self, titel):
+        self.titel = titel
 
-link
-inhalt
-ausgehendeLinks 
-eingehendeLinks
+# link
+# inhalt
+# ausgehendeLinks 
+# eingehendeLinks
