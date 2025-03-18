@@ -1,4 +1,4 @@
-# v 0.2
+# v 0.2.1
 
 import json
 import requests

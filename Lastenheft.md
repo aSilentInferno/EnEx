@@ -30,18 +30,19 @@ Dies hat den Vorteil, dass der Unterschied zwischen z.B. 2 und 3 nominal verhere
 - Leichte Bedienung
 - Punkteausgabe
 - Zeitmessung
-- Zufällige Bestimmung der Start- und Zielwebsides
-- Nur deutsche Websides
-- Ausgabe der Besuchten Websides
+- Zufällige Bestimmung der Start- und Zielwebsites
+- Nur deutsche Websites
+- Ausgabe der Besuchten Websites
 
 ### Wunschkriterien
 
-- Idealen Pfad mit minimaler Schritzahl bestimmen und daran die Punktebestimmung festlegen
-- Pfaddiagramm der aufgerufenen Websides
+- Einen idealen Pfad mit minimaler Schrittzahl bestimmen und daran die Punktebestimmung festlegen
+- Pfaddiagramm der aufgerufenen Websites
 - Keinerlei Fehler in der Ausführung
 - Highscorespeicherung
-- Skallierbares Fenster der Anwendung
-  
+- Skalierbares Fenster der Anwendung
+- Auch englische Wikipedia verfügbar
+
 ### Abgrenzungskriterien
 
 - Counter
@@ -50,8 +51,6 @@ Dies hat den Vorteil, dass der Unterschied zwischen z.B. 2 und 3 nominal verhere
 - Intelligente Punkteermittlung
 
 ## Produkteinsatz
-
-- Allgemeinwissenförderndes Spiel
 
 ### Anwendungsbereiche
 
@@ -76,16 +75,13 @@ Das Projekt wurde unter der MIT License auf GitHub veröffentlicht. Weitere Info
 
 ## Technische Anforderungen
 
-- Python installiert
-- Internetzugang
-
 ### Notwendige Software
 
-Python 3 oder höher
+- Python 3 oder höher
 
 ### Notwendige Hardware
 
-- Computer
+- Computer mit Internetzugang
 
 ### Produktschnittstellen
 
