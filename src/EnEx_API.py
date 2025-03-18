@@ -66,5 +66,3 @@ def get_wiki_links(name: str):
     wiki.inbound_links = inbound_links
     wiki.outbound_links = outbound_links
     return wiki
-
-print(_get_inbound_links('Berlin'))
