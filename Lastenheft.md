@@ -8,29 +8,49 @@ EnEx ist ein Spiel, bei dem du eine Wikipedia-Seite als Startpunkt erhältst und
 
 ### Musskriterien
 
-Es muss funktionieren. 
+- Einwandfreie, effektive und effiziente Funktionsweise
+- Leichte Bedienung
+- Punkteausgabe
+- Zeitmessung
+- Zufällige Bestimmung der Start- und Zielwebsides
+- Nur deutsche Websides
+- Ausgabe der Besuchten Websides
 
 ### Wunschkriterien
 
-Es muss fehlerfrei und effizient funktionieren. 
-
+- Idealen Pfad mit minimaler Schritzahl bestimmen und daran die Punktebestimmung festlegen
+- Pfaddiagramm der aufgerufenen Websides
+- Keinerlei Fehler in der Ausführung
+- Highscorespeicherung
+- Skallierbares Fenster der Anwendung
+  
 ### Abgrenzungskriterien
 
-Counter, Stoppuhr, Ideallösung (einfach überlegen), deutsch, Zeiteinteilbarkeit, Kostenunintensiv, überlegen, einzigartig <!-- Verfassung, Z. 50, Z. 52 -->
+- Counter
+- Stoppuhr
+- Ideallösung
+- Intelligente Punkteermittlung
 
 ## Produkteinsatz
 
+- Allgemeinwissenförderndes Spiel
+
 ### Anwendungsbereiche
 
-Herrn Seiß zufrieden machen und eine gute Note bekommen :)
+- Gegen Langeweile
+- Findung neuer Themengebiete durch zufällige Pfade
 
 ### Zielgruppen
 
-Gelangweilte Menschen <!-- Verfassung, Z. 46 -->
+- Gelangweilte Menschen
+- Wissensbegierige Menschen
+- Herr Seiß
 
 ### Benutzeroberfläche
 
-<!-- muss Moritz machen -->
+- Barrierefreiheit
+- Erleicherte Bedienung
+- Ansprechende Oberfläche
 
 ### Gesetze, Normen, Sicherheitsanforderungen, Plattformabhängigkeiten
 
@@ -38,13 +58,17 @@ Das Projekt wurde unter der MIT License auf GitHub veröffentlicht. Weitere Info
 
 ## Technische Anforderungen
 
+- Python installiert
+- Internetzugang
+
 ### Notwendige Software
 
 Python 3 oder höher
 
 ### Notwendige Hardware
 
-Ein Computer, der leistungsfähig genug ist (sollte eigentlich jeder sein)
+- Computer
 
 ### Produktschnittstellen
 
+- Keine
