@@ -3,24 +3,25 @@ import time
 from wikipedia import Wikipedia
 from EnEx_API import get_wiki_links
 
-def bidirectional_bfs_wikipedia(start, goal):
+def bidirectional_bfs_wikipedia(start, ziel):
     """
-    Finds the shortest path between two Wikipedia pages using bidirectional BFS.
+    Findet den kürzesten Pfad zwischen zwei Wikipedia-Seiten mittels bidirektionalem Breitensuche. (BFS)
+    auswahl des Suchalgorithmus basierend auf den fünden aus https://www2.informatik.uni-stuttgart.de/bibliothek/ftp/medoc.ustuttgart_fi/DIP-3410/DIP-3410.pdf
     :param start: The start Wikipedia page title.
-    :param goal: The target Wikipedia page title.
+    :param ziel: The target Wikipedia page title.
     :return: The shortest path as a list of page titles.
     """
-    if start == goal:
+    if start == ziel:
         return [start]
 
     forward_queue = deque([(start, [start])])
-    backward_queue = deque([(goal, [goal])])
+    backward_queue = deque([(ziel, [ziel])])
 
     forward_visited = {start: [start]}
-    backward_visited = {goal: [goal]}
+    backward_visited = {ziel: [ziel]}
 
     while forward_queue and backward_queue:
-        # Expand the smaller queue for efficiency
+        # Die kleine Anzahl von Schritten wird zuerst durchgeführt, um die Anzahl der Schritte zu minimieren
         if len(forward_queue) <= len(backward_queue):
             result = expand_queue_wikipedia(forward_queue, forward_visited, backward_visited, direction="forward")
         else:
@@ -33,12 +34,12 @@ def bidirectional_bfs_wikipedia(start, goal):
 
 def expand_queue_wikipedia(queue, visited, other_visited, direction):
     """
-    Expands the search queue by fetching Wikipedia objects and checking their links.
-    :param queue: The queue to expand.
-    :param visited: The visited dictionary for this direction.
-    :param other_visited: The visited dictionary of the opposite direction.
-    :param direction: "forward" for outgoing links, "backward" for ingoing links.
-    :return: The shortest path if found, otherwise None.
+    Erweitert die Suchwarteschlange, indem Wikipedia-Objekte abgerufen und deren Links überprüft werden.
+    :param queue: Die Warteschlange, die erweitert werden soll.
+    :param visited: Das besuchte Dictionary für diese Richtung.
+    :param other_visited: Das besuchte Dictionary der entgegengesetzten Richtung.
+    :param direction: "forward" für ausgehende Links, "backward" für eingehende Links.
+    :return: Der kürzeste Pfad, wenn gefunden, andernfalls None.
     """
     for _ in range(len(queue)):  # Expand all nodes at the current depth
         current, path = queue.popleft()
@@ -63,7 +64,7 @@ def expand_queue_wikipedia(queue, visited, other_visited, direction):
     return None
 
 def merge_paths(path1, path2):
-    """ Merges two paths from forward and backward search. """
+    """ Fügt die Beiden Pfade zusammen. """
     return path1 + path2[1:]
 
 
