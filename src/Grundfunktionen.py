@@ -72,7 +72,22 @@ def list_as_str(list):
     return str_1
 
 
-
+def wikipedia_title(url: str) -> str:
+    
+    """
+    Extrahiert die Überschrift eines Wikipedia-Artikels aus der URL
+    
+    param url: Die zu analysierende Wikipedia-URL
+    return: Der Titel des Wikipedia-Artikels als String
+    """
+    
+    parsed_url = urlparse(url)
+    path_parts = parsed_url.path.lstrip('/').split('/')
+    
+    if len(path_parts) > 1 and path_parts[0] == "wiki":
+        return unquote(path_parts[1].replace('_', ' '))
+    
+    return "Wikipedia-URL nicht auslesbar"
 
 
 """

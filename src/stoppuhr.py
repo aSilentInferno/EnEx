@@ -1,6 +1,9 @@
 ## Autor: Clemens Stein
 ## Funktionen: Stoppuhr
 
+import time
+import threading
+
 class Stoppuhr:
     def __init__(self):
         self.startzeit = None

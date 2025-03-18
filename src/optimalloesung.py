@@ -1,6 +1,6 @@
 from collections import deque
 import time
-from Wikipedia import *
+from Wikipedia import get_wiki_links
 from EnEx_API import *
 
 def bidirectional_bfs_wikipedia(start, goal):
