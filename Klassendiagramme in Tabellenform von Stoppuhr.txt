@@ -16,14 +16,3 @@ Stoppuhr:
 	+ _run()
 	+ stop() 
 	+ get_zeit() -> int
-
-
-Wikipedia:
-
-	Attribute:
-	- name: str
-	- url: str
-
-	Funktionen:
-	+ __init__(name: str)
-	+ fetch() -> str 
