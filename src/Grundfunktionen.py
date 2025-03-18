@@ -1,36 +1,7 @@
 ## Autor: Clemens Stein
 ## Funktionen: Random Wiki URL, Punktecounter, Titelextrahierung
 
-
 from urllib.parse import urlparse, unquote
-import math
-import time
-import threading
-
-
-def random_Wiki_URL():
-    
-    """ Gibt eine zufällige Wikipedia URL als String aus """
-    a = "https://de.wikipedia.org/wiki/Spezial:Zuf%C3%A4llige_Seite"
-    return a
-    
-
-def wikipedia_title(url: str) -> str:
-    
-    """
-    Extrahiert die Überschrift eines Wikipedia-Artikels aus der URL
-    
-    param url: Die zu analysierende Wikipedia-URL
-    return: Der Titel des Wikipedia-Artikels als String
-    """
-    
-    parsed_url = urlparse(url)
-    path_parts = parsed_url.path.lstrip('/').split('/')
-    
-    if len(path_parts) > 1 and path_parts[0] == "wiki":
-        return unquote(path_parts[1].replace('_', ' '))
-    
-    return "Wikipedia-URL nicht auslesbar"
 
 
 def link_list(list):
