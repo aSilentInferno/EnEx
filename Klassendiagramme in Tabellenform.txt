@@ -1,0 +1,29 @@
+## Autor: Clemens
+## Zweck: Klassifizierung und Notation der erstellten Klassen
+
+
+Stoppuhr:
+
+	Attribute:
+	- startzeit: float
+	- laufend: bool
+	- thread: Thread
+	- verstrichene_zeit: int
+
+	Funktionen:
+	+ __init__()
+	+ start()
+	+ _run()
+	+ stop() 
+	+ get_zeit() -> int
+
+
+Wikipedia:
+
+	Attribute:
+	- name: str
+	- url: str
+
+	Funktionen:
+	+ __init__(name: str)
+	+ fetch() -> str 
