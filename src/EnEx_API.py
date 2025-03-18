@@ -1,4 +1,4 @@
-# v 0.2.1
+# v 0.2.2
 
 import json
 import requests
@@ -23,7 +23,7 @@ def get_wiki_page(name: str):
     Holt die HTML-Datei einer Wikipedia-Seite mittels einer API-Anfrage.
 
     :param name: Der Name der Wikipedia-Seite.
-    :return: Der Text der Antwort der API-Anfrage.
+    :return: Der Text der Antwort der API-Anfrage innerhalb eines Wikipedia-Objekts.
     """
     url = 'https://api.wikimedia.org/core/v1/wikipedia/de/page/' + name + '/html'
     response = requests.get(url, headers=headers)
@@ -36,7 +36,7 @@ def _get_inbound_links(name: str):
     Holt die eingehenden Links einer Wikipedia-Seite mittels einer API-Anfrage.
 
     :param name: Der Name der Wikipedia-Seite.
-    :return: Die Antwort der API-Anfrage als Liste
+    :return: Die Antwort der API-Anfrage als JSON-Objekt.
     """
     url = 'https://de.wikipedia.org/w/api.php?action=query&format=json&uselang=de&list=backlinks&formatversion=2&bltitle=' + name
     response = requests.get(url)
@@ -47,7 +47,7 @@ def _get_outbound_links(name: str):
     Holt die ausgehenden Links einer Wikipedia-Seite mittels einer API-Anfrage.
 
     :param name: Der Name der Wikipedia-Seite.
-    :return: Die Antwort der API-Anfrage als Liste
+    :return: Die Antwort der API-Anfrage als JSON-Objekt.
     """
     url = 'https://de.wikipedia.org/w/api.php?action=query&prop=links&titles=' + name + '&pllimit=max&format=json'
     response = requests.get(url)
@@ -58,10 +58,10 @@ def get_wiki_links(name: str):
     Holt die eingehenden und ausgehenden Links einer Wikipedia-Seite mittels einer API-Anfrage.
 
     :param name: Der Name der Wikipedia-Seite.
-    :return: Die eingehenden und ausgehenden Links als JSON-Objekt
+    :return: Die eingehenden und ausgehenden Links als JSON-Objekte innerhalb eines Wikipedia-Objekts.
     """
-    inbound_links = json.loads(_get_inbound_links(name))
-    outbound_links = json.loads(_get_outbound_links(name))
+    inbound_links = _get_inbound_links(name)
+    outbound_links = _get_outbound_links(name)
     wiki = Wikipedia(name)
     wiki.inbound_links = inbound_links
     wiki.outbound_links = outbound_links
