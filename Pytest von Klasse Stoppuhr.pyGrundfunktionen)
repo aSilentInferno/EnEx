@@ -1,6 +1,11 @@
+## Autor: Clemens
+## Zweck: Test der Klasse Stoppuhr
+
+## Die Stoppuhr zeigt bis zu einer Sekunde weniger als eigentlich gemessen, da sie immer abrundet, durch int()
+
 import pytest
 import time
-from Grundfunktione.pyn import Stoppuhr  # Angenommen, die Stoppuhr-Klasse ist in der Datei Grundfunktionen.py
+from Grundfunktionen.py import Stoppuhr  # Angenommen, die Stoppuhr-Klasse ist in der Datei Grundfunktionen.py
 
 def test_stoppuhr_start():
     """Testet, ob die Stoppuhr korrekt startet."""
