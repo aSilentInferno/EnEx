@@ -55,7 +55,7 @@ def expand_queue_wikipedia(queue, visited, other_visited, direction):
             visited[neighbor] = new_path
 
             if neighbor in other_visited:  # Wenn Seiten in beiden Richtungen gefunden wurden, gibt es eine Lösung
-                return merge_paths(new_path, other_visited[neighbor])
+                return merge_paths(new_path, other_visited[neighbor],direction)
 
             queue.append((neighbor, new_path))
 
@@ -63,6 +63,10 @@ def expand_queue_wikipedia(queue, visited, other_visited, direction):
 
     return None
 
-def merge_paths(path1, path2):
+def merge_paths(erweiterter_pfad, umgekehrter_pfad, direction):
     """ Fügt die Beiden Pfade zusammen. """
-    return path1 + path2[1:]
+    # path1 is erweiterter Pfad, path2 ist der Pfad der anderen Richtung
+    if direction == "forward":
+        return erweiterter_pfad + umgekehrter_pfad[1:]
+    else:
+        return umgekehrter_pfad + erweiterter_pfad[1:]
