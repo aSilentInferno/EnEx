@@ -8,7 +8,7 @@ def bidirectional_bfs_wikipedia(start, goal):
     Findet den kürzesten Pfad zwischen zwei Wikipedia-Seiten mittels bidirektionalem Breitensuche. (BFS)
     auswahl des Suchalgorithmus basierend auf den fünden aus https://www2.informatik.uni-stuttgart.de/bibliothek/ftp/medoc.ustuttgart_fi/DIP-3410/DIP-3410.pdf
     :param start: The start Wikipedia page title.
-    :param ziel: The target Wikipedia page title.
+    :param goal: The target Wikipedia page title.
     :return: The shortest path as a list of page titles.
     """
     if start == goal:
@@ -45,7 +45,7 @@ def expand_queue_wikipedia(queue, visited, other_visited, direction):
         current, path = queue.popleft()
         wiki_page = get_wiki_links(current)
         
-        neighbors = wiki_page.outgoinglinks if direction == "forward" else wiki_page.ingoinglinks
+        neighbors = wiki_page.ausgehende_links if direction == "forward" else wiki_page.eingehende_links
 
         for neighbor in neighbors:
             if neighbor in visited:
