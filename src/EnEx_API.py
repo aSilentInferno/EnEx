@@ -83,6 +83,3 @@ def get_wiki_links(name: str):
     wiki.eingehende_links = inbound_links
     wiki.ausgehende_links = outbound_links
     return wiki
-
-
-print(get_wiki_links("Haushund"))
