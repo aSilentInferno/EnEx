@@ -47,7 +47,7 @@ def _get_inbound_links(name: str):
     linksdictionary = response["query"]["backlinks"]
 
     # filere Links die wir nicht haben wollen
-    links = [_["title"] for _ in linksdictionary if not (_["title"].startswith(("Benutzer:", "Wikipedia:", "Vorlage:", "redirect:")))]
+    links = [_["title"] for _ in linksdictionary if not (_["title"].startswith(("Benutzer:", "Wikipedia:", "Vorlage:", "Hilfe", "redirect:")))]
     
     return links
 
@@ -66,7 +66,7 @@ def _get_outbound_links(name: str):
     linksdictionary = next(iter(response["query"]["pages"].values()))["links"]
 
     # filere Links die wir nicht haben wollen
-    links = [_["title"] for _ in linksdictionary if not (_["title"].startswith(("Benutzer:", "Wikipedia:", "Vorlage:")))]
+    links = [_["title"] for _ in linksdictionary if not (_["title"].startswith(("Benutzer:", "Wikipedia:", "Vorlage:", "Hilfe:")))]
     
     return links
 
