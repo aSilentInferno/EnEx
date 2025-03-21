@@ -31,6 +31,8 @@ def get_wiki_page(name: str):
     wiki.inhalt = response.text
     return wiki
 
+    
+
 def _get_inbound_links(name: str):
     """
     Holt die eingehenden Links einer Wikipedia-Seite mittels einer API-Anfrage.
@@ -39,8 +41,16 @@ def _get_inbound_links(name: str):
     :return: Die Antwort der API-Anfrage als JSON-Objekt.
     """
     url = 'https://de.wikipedia.org/w/api.php?action=query&format=json&uselang=de&list=backlinks&formatversion=2&bltitle=' + name
-    response = requests.get(url)
-    return response.json()
+    response = requests.get(url).json()
+    
+    # Die Dictionary die Wikipedia zurpckgibt hat einenkomischen aufbau mit sehr viel verschachtelung
+    linksdictionary = response["query"]["backlinks"]
+
+    # filere Links die wir nicht haben wollen
+    links = [_["title"] for _ in linksdictionary if not (_["title"].startswith(("Benutzer:", "Wikipedia:", "Vorlage:", "Hilfe", "redirect:")))]
+    
+    return links
+
 
 def _get_outbound_links(name: str):
     """
@@ -50,8 +60,15 @@ def _get_outbound_links(name: str):
     :return: Die Antwort der API-Anfrage als JSON-Objekt.
     """
     url = 'https://de.wikipedia.org/w/api.php?action=query&prop=links&titles=' + name + '&pllimit=max&format=json'
-    response = requests.get(url)
-    return response.json()
+    response = requests.get(url).json()
+    
+    # Die Dictionary die Wikipedia zurpckgibt hat einenkomischen aufbau mit sehr viel verschachtelung
+    linksdictionary = next(iter(response["query"]["pages"].values()))["links"]
+
+    # filere Links die wir nicht haben wollen
+    links = [_["title"] for _ in linksdictionary if not (_["title"].startswith(("Benutzer:", "Wikipedia:", "Vorlage:", "Hilfe:")))]
+    
+    return links
 
 def get_wiki_links(name: str):
     """
@@ -63,6 +80,6 @@ def get_wiki_links(name: str):
     inbound_links = _get_inbound_links(name)
     outbound_links = _get_outbound_links(name)
     wiki = Wikipedia(name)
-    wiki.inbound_links = inbound_links
-    wiki.outbound_links = outbound_links
+    wiki.eingehende_links = inbound_links
+    wiki.ausgehende_links = outbound_links
     return wiki
