@@ -40,14 +40,14 @@ def _get_inbound_links(name: str):
     :param name: Der Name der Wikipedia-Seite.
     :return: Die Antwort der API-Anfrage als JSON-Objekt.
     """
-    url = 'https://de.wikipedia.org/w/api.php?action=query&format=json&uselang=de&list=backlinks&formatversion=2&bltitle=' + name
+    url = 'https://de.wikipedia.org/w/api.php?action=query&format=json&prop=linkshere&titles=' + name + '&formatversion=2&lhlimit=max'
     response = requests.get(url).json()
     
     # Die Dictionary die Wikipedia zurpckgibt hat einenkomischen aufbau mit sehr viel verschachtelung
-    linksdictionary = response["query"]["backlinks"]
+    linksdictionary = response["query"]["pages"]["linkshere"]
 
     # filere Links die wir nicht haben wollen
-    links = [_["title"] for _ in linksdictionary if not (_["title"].startswith(("Benutzer:", "Wikipedia:", "Vorlage:", "Hilfe", "redirect:")))]
+    links = [_["title"] for _ in linksdictionary if not (_["title"].startswith(("Benutzer:", "Wikipedia:", "Vorlage:", "Hilfe", "redirect:", "Special:", "Kategorie:")))]
     
     return links
 
