@@ -1,6 +1,3 @@
-# v 0.2.4
-
-import json
 import requests
 import os
 from dotenv import load_dotenv
@@ -40,15 +37,31 @@ def _get_inbound_links(name: str):
     :param name: Der Name der Wikipedia-Seite.
     :return: Die Antwort der API-Anfrage als JSON-Objekt.
     """
-    url = 'https://de.wikipedia.org/w/api.php?action=query&format=json&prop=linkshere&titles=' + name + '&formatversion=2&lhlimit=max'
-    response = requests.get(url).json()
+    url = 'https://de.wikipedia.org/w/api.php'
+    params = {
+	"action": "query",
+	"format": "json",
+	"prop": "links",
+	"titles": name,
+	"formatversion": "2",
+	"lhlimit": "max"
+    }
+    response = requests.get(url, params=params).json()
     
-    # Die Dictionary die Wikipedia zurpckgibt hat einenkomischen aufbau mit sehr viel verschachtelung
+    # Die Dictionary die Wikipedia zurückgibt hat einen komischen Aufbau mit sehr viel Verschachtelung
     linksdictionary = response["query"]["pages"]["linkshere"]
 
-    # filere Links die wir nicht haben wollen
+    # filtere Links die wir nicht haben wollen
     links = [_["title"] for _ in linksdictionary if not (_["title"].startswith(("Benutzer:", "Wikipedia:", "Vorlage:", "Hilfe", "redirect:", "Special:", "Kategorie:")))]
     
+    if response["continue"]:
+        while response["continue"]:
+            params["continue"] = response["continue"]["continue"]
+            params["lhcontinue"] = response["continue"]["lhcontinue"]
+            response = requests.get(url, params=params).json()
+            linksdictionary = response["query"]["pages"]["linkshere"]
+            links += [_["title"] for _ in linksdictionary if not (_["title"].startswith(("Benutzer:", "Wikipedia:", "Vorlage:", "Hilfe", "redirect:", "Special:", "Kategorie:")))]
+
     return links
 
 
@@ -59,16 +72,33 @@ def _get_outbound_links(name: str):
     :param name: Der Name der Wikipedia-Seite.
     :return: Die Antwort der API-Anfrage als JSON-Objekt.
     """
-    url = 'https://de.wikipedia.org/w/api.php?action=query&prop=links&titles=' + name + '&pllimit=max&format=json'
-    response = requests.get(url).json()
+    url = 'https://de.wikipedia.org/w/api.php'
+    params = {
+	"action": "query",
+	"format": "json",
+	"prop": "linkshere",
+	"titles": name,
+	"formatversion": "2",
+	"pllimit": "max"
+    }
+    response = requests.get(url, params=params).json()
     
-    # Die Dictionary die Wikipedia zurpckgibt hat einenkomischen aufbau mit sehr viel verschachtelung
+    # Die Dictionary die Wikipedia zurückgibt hat einen komischen Aufbau mit sehr viel Verschachtelung
     linksdictionary = next(iter(response["query"]["pages"].values()))["links"]
 
-    # filere Links die wir nicht haben wollen
+    # filtere Links die wir nicht haben wollen
     links = [_["title"] for _ in linksdictionary if not (_["title"].startswith(("Benutzer:", "Wikipedia:", "Vorlage:", "Hilfe:", "Special", "Kategorie:")))]
     
+    if response["continue"]:
+        while response["continue"]:
+            params["continue"] = response["continue"]["continue"]
+            params["plcontinue"] = response["continue"]["plcontinue"]
+            response = requests.get(url, params=params).json()
+            linksdictionary = next(iter(response["query"]["pages"].values()))["links"]
+            links += [_["title"] for _ in linksdictionary if not (_["title"].startswith(("Benutzer:", "Wikipedia:", "Vorlage:", "Hilfe:", "Special", "Kategorie:")))]
+
     return links
+
 
 def get_wiki_links(name: str):
     """
@@ -77,9 +107,7 @@ def get_wiki_links(name: str):
     :param name: Der Name der Wikipedia-Seite.
     :return: Die eingehenden und ausgehenden Links als JSON-Objekte innerhalb eines Wikipedia-Objekts.
     """
-    inbound_links = _get_inbound_links(name)
-    outbound_links = _get_outbound_links(name)
     wiki = Wikipedia(name)
-    wiki.eingehende_links = inbound_links
-    wiki.ausgehende_links = outbound_links
+    wiki.eingehende_links = _get_inbound_links(name)
+    wiki.ausgehende_links = _get_outbound_links(name)
     return wiki
