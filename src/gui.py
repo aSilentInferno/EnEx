@@ -1,4 +1,4 @@
-# v 0.1.1
+# v 0.1.2
 
 import webview
 from enex_api import get_wiki_page
@@ -12,9 +12,12 @@ class Api:
         
     def link_clicked(self, url):
         self.last_clicked_url = url  # Speichere die URL
-        print(f"Link geklickt: {url}")  # Ausgabe der URL in der Konsole - nur für Testzwecke! 
         if url and url[0] == '.':
-            link = get_wiki_page(url[2:]) # die URL kürzem, damit get_wiki_page funktioniert
+            url = url[2:]
+        else:
+            return None # Wenn ein externer Link geklickt wird, wird das Öffnen des Links verhindert 
+        print(f"Link geklickt: {url}")  # Ausgabe der URL in der Konsole - nur für Testzwecke! 
+        link = get_wiki_page(url) # die URL kürzem, damit get_wiki_page funktioniert
         window.load_html(html_content.replace(start.inhalt, link.inhalt))  # Lade die URL im gleichen Fenster
 
 
