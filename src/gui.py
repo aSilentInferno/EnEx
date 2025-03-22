@@ -14,9 +14,9 @@ class Api:
         """
         Initialisiert die API-Klasse und setzt die Variable zum Speichern der letzten geklickten URL.
         """
-        self.last_clicked_url = None # Variable zum Speichern der letzten geklickten URL
+        self.last_geklickt_url = None # Variable zum Speichern der letzten geklickten URL
         
-    def link_clicked(self, url): # Python-Funktion, die von JavaScript aufgerufen wird
+    def link_geklickt(self, url): # Python-Funktion, die von JavaScript aufgerufen wird
         """
         Verarbeitet das Ereignis, wenn ein Link geklickt wird.
         
@@ -26,7 +26,7 @@ class Api:
         Returns:
             None: Gibt None zurück, wenn ein externer Link geklickt wird. Dadurch wird das Öffnen des Links verhindert.
         """
-        self.last_clicked_url = url  # Speichere die URL
+        self.last_geklickt_url = url  # Speichere die URL
         if url and url[0] == '.':
             url = url[2:]
         else:
@@ -40,7 +40,7 @@ script = """
 <script>
     function handleLinkClick(event) {
         event.preventDefault(); // Verhindert das Standardverhalten des Links
-        window.pywebview.api.link_clicked(event.target.href); // Ruft die Python-Funktion auf
+        window.pywebview.api.link_geklickt(event.target.href); // Ruft die Python-Funktion auf
     }
 
     // Fügt den Klick-Handler zu allen Links hinzu
