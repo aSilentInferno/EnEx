@@ -1,8 +1,9 @@
 import webview
-from enex_api import get_wiki_page
+from EnEx_API import get_wiki_inhalt
+from wikipedia import Wikipedia
 
 
-start = get_wiki_page("Wasserstoff") # noch keine zufällige Seite
+start = get_wiki_inhalt("Wasserstoff") # noch keine zufällige Seite
 
 class Api:
     """
@@ -31,7 +32,7 @@ class Api:
         else:
             return None  # Wenn ein externer Link geklickt wird, wird das Öffnen des Links verhindert 
         print(f"Link geklickt: {url}")  # Ausgabe der URL in der Konsole - nur für Testzwecke! 
-        link = get_wiki_page(url)  # die URL kürzen, damit get_wiki_page funktioniert
+        link = get_wiki_inhalt(url)  # die URL kürzen, damit get_wiki_inhalt funktioniert
         window.load_html(html_content.replace(start.inhalt, link.inhalt))  # Lade die URL im gleichen Fenster
 
 

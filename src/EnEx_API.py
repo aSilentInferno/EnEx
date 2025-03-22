@@ -30,7 +30,7 @@ def get_wiki_page(name: str):
 
     
 
-def _get_inbound_links(name: str):
+def _get_eingehende_links(name: str):
     """
     Holt die eingehenden Links einer Wikipedia-Seite mittels einer API-Anfrage.
 
@@ -65,7 +65,7 @@ def _get_inbound_links(name: str):
     return links
 
 
-def _get_outbound_links(name: str):
+def _get_ausgehende_links(name: str):
     """
     Holt die ausgehenden Links einer Wikipedia-Seite mittels einer API-Anfrage.
 
@@ -108,6 +108,6 @@ def get_wiki_links(name: str):
     :return: Die eingehenden und ausgehenden Links als JSON-Objekte innerhalb eines Wikipedia-Objekts.
     """
     wiki = Wikipedia(name)
-    wiki.eingehende_links = _get_inbound_links(name)
-    wiki.ausgehende_links = _get_outbound_links(name)
+    wiki.eingehende_links = _get_eingehende_links(name)
+    wiki.ausgehende_links = _get_ausgehende_links(name)
     return wiki
