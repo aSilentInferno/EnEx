@@ -14,7 +14,7 @@ class Api:
         """
         Initialisiert die API-Klasse und setzt die Variable zum Speichern der letzten geklickten URL.
         """
-        self.last_geklickt_url = None # Variable zum Speichern der letzten geklickten URL
+        self.zuletzt_geklickte_url = None # Variable zum Speichern der letzten geklickten URL
         
     def link_geklickt(self, url): # Python-Funktion, die von JavaScript aufgerufen wird
         """
@@ -26,7 +26,7 @@ class Api:
         Returns:
             None: Gibt None zurück, wenn ein externer Link geklickt wird. Dadurch wird das Öffnen des Links verhindert.
         """
-        self.last_geklickt_url = url  # Speichere die URL
+        self.zuletzt_geklickte_url = url  # Speichere die URL
         if url and url[0] == '.':
             url = url[2:]
         else:
