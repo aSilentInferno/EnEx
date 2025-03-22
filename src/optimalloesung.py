@@ -38,10 +38,10 @@ def bidirektionale_breitensuche_wikipedia(start, ziel):
 def _erweitere_suchweite(warteschlange, bereits_besucht, andere_seite_besucht, richtung):
     """
     Erweitert die Suchwarteschlange, indem Wikipedia-Objekte abgerufen und deren Links überprüft werden.
-    :param queue: Die Warteschlange, die erweitert werden soll.
-    :param visited: Das besuchte Dictionary für diese Richtung.
-    :param other_visited: Das besuchte Dictionary der entgegengesetzten Richtung.
-    :param direction: "forwärts" für ausgehende Links, "rückwärts" für eingehende Links.
+    :param warteschlange: Die Warteschlange, die erweitert werden soll.
+    :param bereits_besucht: Das besuchte Dictionary für diese Richtung.
+    :param andere_seite_besucht: Das besuchte Dictionary der entgegengesetzten Richtung.
+    :param richtung: "forwärts" für ausgehende Links, "rückwärts" für eingehende Links.
     :return: Der kürzeste Pfad, wenn gefunden, andernfalls None.
     """
     for _ in range(len(warteschlange)):
