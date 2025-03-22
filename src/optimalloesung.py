@@ -3,7 +3,7 @@ import time
 from wikipedia import Wikipedia
 from EnEx_API import get_wiki_links
 
-FOR = "forwärts"
+FOR = "vorwärts"
 RÜCK = "zurück"
 
 def bidirektionale_breitensuche_wikipedia(start, ziel):
@@ -20,15 +20,15 @@ def bidirektionale_breitensuche_wikipedia(start, ziel):
     vorwärts_warteschlange = deque([(start, [start])])
     rückwärts_warteschlange = deque([(ziel, [ziel])])
 
-    forwärts_besucht = {start: [start]}
+    vorwärts_besucht = {start: [start]}
     rückwärts_besucht = {ziel: [ziel]}
 
     while vorwärts_warteschlange and rückwärts_warteschlange:
         # Die kleine Anzahl von Schritten wird zuerst durchgeführt, um die Anzahl der Schritte zu minimieren
         if len(vorwärts_warteschlange) <= len(rückwärts_warteschlange):
-            ergebnis = _erweitere_suchweite(vorwärts_warteschlange, forwärts_besucht, rückwärts_besucht, richtung=FOR)
+            ergebnis = _erweitere_suchweite(vorwärts_warteschlange, vorwärts_besucht, rückwärts_besucht, richtung=FOR)
         else:
-            ergebnis = _erweitere_suchweite(rückwärts_warteschlange, rückwärts_besucht, forwärts_besucht, richtung=RÜCK)
+            ergebnis = _erweitere_suchweite(rückwärts_warteschlange, rückwärts_besucht, vorwärts_besucht, richtung=RÜCK)
 
         if ergebnis:
             return ergebnis
@@ -41,7 +41,7 @@ def _erweitere_suchweite(warteschlange, bereits_besucht, andere_seite_besucht, r
     :param warteschlange: Die Warteschlange, die erweitert werden soll.
     :param bereits_besucht: Das besuchte Dictionary für diese Richtung.
     :param andere_seite_besucht: Das besuchte Dictionary der entgegengesetzten Richtung.
-    :param richtung: "forwärts" für ausgehende Links, "rückwärts" für eingehende Links.
+    :param richtung: "vorwärts" für ausgehende Links, "rückwärts" für eingehende Links.
     :return: Der kürzeste Pfad, wenn gefunden, andernfalls None.
     """
     for _ in range(len(warteschlange)):
