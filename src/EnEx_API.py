@@ -1,4 +1,4 @@
-# v 0.2.2
+# v 0.2.4
 
 import json
 import requests
@@ -66,7 +66,7 @@ def _get_outbound_links(name: str):
     linksdictionary = next(iter(response["query"]["pages"].values()))["links"]
 
     # filere Links die wir nicht haben wollen
-    links = [_["title"] for _ in linksdictionary if not (_["title"].startswith(("Benutzer:", "Wikipedia:", "Vorlage:", "Hilfe:")))]
+    links = [_["title"] for _ in linksdictionary if not (_["title"].startswith(("Benutzer:", "Wikipedia:", "Vorlage:", "Hilfe:", "Special", "Kategorie:")))]
     
     return links
 
