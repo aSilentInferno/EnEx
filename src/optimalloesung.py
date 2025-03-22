@@ -1,69 +1,74 @@
 from collections import deque
 import time
-from Wikipedia import get_wiki_links
-from EnEx_API import *
+from wikipedia import Wikipedia
+from EnEx_API import get_wiki_links
 
-def bidirectional_bfs_wikipedia(start, goal):
+FOR = "forwärts"
+RÜCK = "zurück"
+
+def bidirektionale_breitensuche_wikipedia(start, ziel):
     """
-    Finds the shortest path between two Wikipedia pages using bidirectional BFS.
-    :param start: The start Wikipedia page title.
-    :param goal: The target Wikipedia page title.
-    :return: The shortest path as a list of page titles.
+    Findet den kürzesten Pfad zwischen zwei Wikipedia-Seiten mittels bidirektionaler Breitensuche. (BFS)
+    auswahl des Suchalgorithmus basierend auf den fünden aus https://www2.informatik.uni-stuttgart.de/bibliothek/ftp/medoc.ustuttgart_fi/DIP-3410/DIP-3410.pdf
+    :param start: Der name der Startseite
+    :param ziel: Der name der Zielseite
+    :return: Die Liste der Seiten, die den kürzesten Pfad zwischen den beiden Seiten darstellen.
     """
-    if start == goal:
+    if start == ziel:
         return [start]
 
-    forward_queue = deque([(start, [start])])
-    backward_queue = deque([(goal, [goal])])
+    vorwärts_warteschlange = deque([(start, [start])])
+    rückwärts_warteschlange = deque([(ziel, [ziel])])
 
-    forward_visited = {start: [start]}
-    backward_visited = {goal: [goal]}
+    forwärts_besucht = {start: [start]}
+    rückwärts_besucht = {ziel: [ziel]}
 
-    while forward_queue and backward_queue:
-        # Expand the smaller queue for efficiency
-        if len(forward_queue) <= len(backward_queue):
-            result = expand_queue_wikipedia(forward_queue, forward_visited, backward_visited, direction="forward")
+    while vorwärts_warteschlange and rückwärts_warteschlange:
+        # Die kleine Anzahl von Schritten wird zuerst durchgeführt, um die Anzahl der Schritte zu minimieren
+        if len(vorwärts_warteschlange) <= len(rückwärts_warteschlange):
+            ergebnis = _erweitere_suchweite(vorwärts_warteschlange, forwärts_besucht, rückwärts_besucht, richtung=FOR)
         else:
-            result = expand_queue_wikipedia(backward_queue, backward_visited, forward_visited, direction="backward")
+            ergebnis = _erweitere_suchweite(rückwärts_warteschlange, rückwärts_besucht, forwärts_besucht, richtung=RÜCK)
 
-        if result:
-            return result  # Return the shortest path when found
+        if ergebnis:
+            return ergebnis
+    # falls keine Lösung gefunden wurde und alle links abgesucht wurden
+    return None
 
-    return None  # No path found
-
-def expand_queue_wikipedia(queue, visited, other_visited, direction):
+def _erweitere_suchweite(warteschlange, bereits_besucht, andere_seite_besucht, richtung):
     """
-    Expands the search queue by fetching Wikipedia objects and checking their links.
-    :param queue: The queue to expand.
-    :param visited: The visited dictionary for this direction.
-    :param other_visited: The visited dictionary of the opposite direction.
-    :param direction: "forward" for outgoing links, "backward" for ingoing links.
-    :return: The shortest path if found, otherwise None.
+    Erweitert die Suchwarteschlange, indem Wikipedia-Objekte abgerufen und deren Links überprüft werden.
+    :param warteschlange: Die Warteschlange, die erweitert werden soll.
+    :param bereits_besucht: Das besuchte Dictionary für diese Richtung.
+    :param andere_seite_besucht: Das besuchte Dictionary der entgegengesetzten Richtung.
+    :param richtung: "forwärts" für ausgehende Links, "rückwärts" für eingehende Links.
+    :return: Der kürzeste Pfad, wenn gefunden, andernfalls None.
     """
-    for _ in range(len(queue)):  # Expand all nodes at the current depth
-        current, path = queue.popleft()
-        wiki_page = get_wiki_links(current)  # Fetch Wikipedia object
+    for _ in range(len(warteschlange)):
+        aktuell, pfad = warteschlange.popleft()
+        wiki_seite = get_wiki_links(aktuell)
         
-        neighbors = wiki_page.outgoinglinks if direction == "forward" else wiki_page.ingoinglinks
+        ausgehende_seiten = wiki_seite.ausgehende_links if richtung == FOR else wiki_seite.eingehende_links
 
-        for neighbor in neighbors:
-            if neighbor in visited:  # Skip already visited nodes in this direction
+        for seite in ausgehende_seiten:
+            if seite in bereits_besucht:
                 continue
 
-            new_path = path + [neighbor] if direction == "forward" else [neighbor] + path
-            visited[neighbor] = new_path
+            erweiterter_pfad = pfad + [seite] if richtung == FOR else [seite] + pfad
+            bereits_besucht[seite] = erweiterter_pfad
 
-            if neighbor in other_visited:  # Meeting point found!
-                return merge_paths(new_path, other_visited[neighbor])
+            if seite in andere_seite_besucht:  # Wenn Seiten in beiden Richtungen gefunden wurden, gibt es eine Lösung
+                return _vereinige_pfade(erweiterter_pfad, andere_seite_besucht[seite],richtung)
 
-            queue.append((neighbor, new_path))
+            warteschlange.append((seite, erweiterter_pfad))
 
-        time.sleep(0.5)  # Prevent excessive API calls
+        time.sleep(0.5)  # Verhindere Unnötige Anfragen an die Wikipedia-API
 
     return None
 
-def merge_paths(path1, path2):
-    """ Merges two paths from forward and backward search. """
-    return path1 + path2[1:]
-
-
+def _vereinige_pfade(erweiterter_pfad, umgekehrter_pfad, richtung):
+    """ Fügt die Beiden Pfade zusammen. """
+    if richtung == FOR:
+        return erweiterter_pfad + umgekehrter_pfad[1:]
+    else:
+        return umgekehrter_pfad + erweiterter_pfad[1:]
