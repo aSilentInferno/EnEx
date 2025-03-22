@@ -1,4 +1,4 @@
-# v 0.1
+# v 0.1.1
 
 import webview
 from enex_api import get_wiki_page
@@ -12,9 +12,9 @@ class Api:
         
     def link_clicked(self, url):
         self.last_clicked_url = url  # Speichere die URL
-        print(f"Link geklickt: {url}")  # Ausgabe der URL in der Konsole
+        print(f"Link geklickt: {url}")  # Ausgabe der URL in der Konsole - nur für Testzwecke! 
         if url and url[0] == '.':
-            link = get_wiki_page(url[2:])
+            link = get_wiki_page(url[2:]) # die URL kürzem, damit get_wiki_page funktioniert
         window.load_html(html_content.replace(start.inhalt, link.inhalt))  # Lade die URL im gleichen Fenster
 
 
@@ -56,8 +56,6 @@ html_content = """
 </html>
 """
 
-# Erstelle ein Fenster mit dem HTML-Inhalt
 window = webview.create_window('HTML Viewer', html=html_content, js_api=Api())
 
-# Registriere die API für den Zugriff von JavaScript auf Python
 webview.start()
