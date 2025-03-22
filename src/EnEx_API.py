@@ -15,7 +15,7 @@ headers = {
         'User-Agent': 'EnEx (kajwich@icloud.com)'
         }
 
-def get_wiki_page(name: str):
+def get_wiki_inhalt(name: str):
     """
     Holt die HTML-Datei einer Wikipedia-Seite mittels einer API-Anfrage.
 
