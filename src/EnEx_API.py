@@ -126,4 +126,8 @@ def get_zufallige_seite():
 	"formatversion": "2"
     }
     response = requests.get(url, params=params).json()
-    return response["query"]["random"][0]["title"]
+    title = response["query"]["random"][0]["title"]
+    while title.startswith(("Benutzer:", "Wikipedia:", "Vorlage:", "Hilfe", "redirect:", "Special:", "Kategorie:", "Diskussion:", "Portal:", "Datei:", "Benutzer Diskussion")):
+        response = requests.get(url, params=params).json()
+        title = response["query"]["random"][0]["title"]
+    return title
