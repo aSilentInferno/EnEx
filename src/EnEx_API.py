@@ -112,7 +112,7 @@ def get_wiki_links(name: str):
     wiki.ausgehende_links = _get_ausgehende_links(name)
     return wiki
 
-def get_zufällige_seite():
+def get_zufallige_seite():
     """
     Holt den Namen einer zufälligen Wikipedia-Seite mittels einer API-Anfrage.
 

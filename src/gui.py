@@ -1,9 +1,11 @@
 import webview
-from EnEx_API import get_wiki_inhalt
+from EnEx_API import get_wiki_inhalt, get_zufallige_seite
 from wikipedia import Wikipedia
 
 
-start = get_wiki_inhalt("Wasserstoff") # noch keine zufällige Seite
+link = ""
+
+history = []
 
 class Api:
     """
@@ -26,56 +28,76 @@ class Api:
         Returns:
             None: Gibt None zurück, wenn ein externer Link geklickt wird. Dadurch wird das Öffnen des Links verhindert.
         """
+        global history
         self.zuletzt_geklickte_url = url  # Speichere die URL
         if url and url[0] == '.':
+            history.append(url[2:])
             reload_link(url[2:])
         else:
             return None  # Wenn ein externer Link geklickt wird, wird das Öffnen des Links verhindert 
         
 def reload_link(url): 
+    global link
     link = get_wiki_inhalt(url)  # die URL kürzen, damit get_wiki_inhalt funktioniert
-    wiki_window.load_html(html_content.replace(start.inhalt, link.inhalt))  # Lade die URL im gleichen Fenster
+    wiki_window.load_html(html_content)  # Lade die URL im gleichen Fenster
 
 
-script = """
-<script>
-    function handleLinkClick(event) {
-        event.preventDefault(); // Verhindert das Standardverhalten des Links
-        window.pywebview.api.link_geklickt(event.target.href); // Ruft die Python-Funktion auf
-    }
-
-    // Fügt den Klick-Handler zu allen Links hinzu
-    function addLinkHandlers() {
-        var links = document.getElementsByTagName('a');
-        for (var i = 0; i < links.length; i++) {
-            links[i].onclick = handleLinkClick;
-        }
-    }
-
-    // Füge die Link-Handler hinzu, wenn die Seite geladen wird
-    window.onload = function() {
-        addLinkHandlers();
-    };
-</script>
-"""
+script = ""
 
 # HTML-Inhalt mit Linkverarbeitung
-html_content = """
-<html>
-<head>
-    <style>
-        h1 { color: #202122; }
-        p { color: #333; }
-    </style>
-    """ + script + """
-</head>
-<body>
-    """ + start.inhalt + """
-</body>
-</html>
-"""
+html_content = ""
 
 wiki_window = webview.create_window('HTML Viewer', html=html_content, js_api=Api())
 
-def starte_Spiel():
+def starte_Spiel(start, ziel):
+    global link
+    global script
+    global html_content
+    global history
+    global wiki_window
+
+    if start == "":
+        start = get_zufallige_seite()
+    if ziel == "":
+        ziel = get_zufallige_seite()
+
+    link = get_wiki_inhalt(start)
+    script = script = """
+    <script>
+        function handleLinkClick(event) {
+            event.preventDefault(); // Verhindert das Standardverhalten des Links
+            window.pywebview.api.link_geklickt(event.target.href); // Ruft die Python-Funktion auf
+        }
+
+        // Fügt den Klick-Handler zu allen Links hinzu
+        function addLinkHandlers() {
+            var links = document.getElementsByTagName('a');
+            for (var i = 0; i < links.length; i++) {
+                links[i].onclick = handleLinkClick;
+            }
+        }
+
+        // Füge die Link-Handler hinzu, wenn die Seite geladen wird
+        window.onload = function() {
+            addLinkHandlers();
+        };
+    </script>
+    """
+
+    html_content = """
+    <html>
+    <head>
+        <style>
+            h1 { color: #202122; }
+            p { color: #333; }
+        </style>
+        """ + script + """
+    </head>
+    <body>
+        """ + link.inhalt + """
+    </body>
+    </html>
+    """
+    history.append(start)
+    wiki_window.load_html(html_content)
     webview.start()
