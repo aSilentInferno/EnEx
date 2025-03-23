@@ -22,10 +22,17 @@ def get_wiki_inhalt(name: str):
     :param name: Der Name der Wikipedia-Seite.
     :return: Der Text der Antwort der API-Anfrage innerhalb eines Wikipedia-Objekts.
     """
-    url = 'https://api.wikimedia.org/core/v1/wikipedia/de/page/' + name + '/html'
-    response = requests.get(url, headers=headers)
+    url = 'https://de.wikipedia.org/w/api.php'
+    params = {
+    "action": "parse",
+    "format": "json",
+    "page": name,
+    "prop": "text",
+    "formatversion": "2"
+    }      
+    response = requests.get(url, params=params).json()
     wiki = Wikipedia(name)
-    wiki.inhalt = response.text
+    wiki.inhalt = response["parse"]["text"]
     return wiki
 
     
