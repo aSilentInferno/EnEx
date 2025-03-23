@@ -1,7 +1,7 @@
 import sys
 from PyQt5.QtWidgets import QApplication
 import EnEx_API
-from test import HTMLViewer
+from GUI import HTMLViewer
 
 def main():
     history = [EnEx_API.get_wiki_inhalt(EnEx_API.get_zufallige_seite()).inhalt]
