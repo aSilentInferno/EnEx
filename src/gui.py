@@ -28,12 +28,13 @@ class Api:
         """
         self.zuletzt_geklickte_url = url  # Speichere die URL
         if url and url[0] == '.':
-            url = url[2:]
+            reload_link(url[2:])
         else:
             return None  # Wenn ein externer Link geklickt wird, wird das Öffnen des Links verhindert 
-        print(f"Link geklickt: {url}")  # Ausgabe der URL in der Konsole - nur für Testzwecke! 
-        link = get_wiki_inhalt(url)  # die URL kürzen, damit get_wiki_inhalt funktioniert
-        window.load_html(html_content.replace(start.inhalt, link.inhalt))  # Lade die URL im gleichen Fenster
+        
+def reload_link(url): 
+    link = get_wiki_inhalt(url)  # die URL kürzen, damit get_wiki_inhalt funktioniert
+    window.load_html(html_content.replace(start.inhalt, link.inhalt))  # Lade die URL im gleichen Fenster
 
 
 script = """
@@ -76,4 +77,5 @@ html_content = """
 
 window = webview.create_window('HTML Viewer', html=html_content, js_api=Api())
 
-webview.start()
+def start_game():
+    webview.start()
