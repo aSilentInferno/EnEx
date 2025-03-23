@@ -1,12 +1,12 @@
 import webview
 from EnEx_API import get_wiki_inhalt, get_zufallige_seite
 from wikipedia import Wikipedia
+# from optimalloesung import bidirektionale_breitensuche_wikipedia
 import random
-import screeninfo
-
-screen = screeninfo.get_monitors()[0]
 
 ziel_titel = ""
+
+# optimallösung = bidirektionale_breitensuche_wikipedia("Python", "Philosophie")
 
 link = ""
 
@@ -147,7 +147,7 @@ def reload_link(titel):
     global wiki_window
     global script
     global ziel_titel
-    global optimallösung
+    # global optimallösung
 
     link = get_wiki_inhalt(titel)  # die URL kürzen, damit get_wiki_inhalt funktioniert
 
@@ -183,26 +183,18 @@ def reload_link(titel):
             <ul>
         """
 
+        punkte = random.randint(0, 1000)
+
         for seite in history:
             html_content += "<li>" + seite + "</li>"
 
         html_content += """
             </ul>
-            <p>Die Optimallösung: </p>
-            <ul>
-        """
-
-        for seite in optimallösung:
-            html_content += "<li>" + seite + "</li>"
-
-        punkte = random.randint(1, 1000)
-        html_content += """
-            </ul>
-            <p> Du hast """ + str(punkte) + """ Punkte. </p> // Die Punktzahl wird zufällig generiert, weil es lustiger ist. Ursprünglich war vorgesehen, sie basierend auf der Differenz zur Optimallösung und der verbrauchten Zeit zu berechnen.
+            <p> Du hast """ + str(punkte) + """ Punkte. </p> 
         </body>
         </html>
         """
-
+        # Die Punktzahl wird zufällig generiert, weil es lustiger ist. Ursprünglich war vorgesehen, sie basierend auf der Differenz zur Optimallösung und der verbrauchten Zeit zu berechnen.
     wiki_window.load_html(html_content)  # Lade die URL im gleichen Fenster
 
 
@@ -248,9 +240,9 @@ menu_html = """
 </html>
 """
 
-wiki_window = webview.create_window('HTML Viewer', html=html_content, js_api=Api(), width=screen.width*0.5, height=screen.height, x=screen.width*0.5, y=0)
+wiki_window = webview.create_window('HTML Viewer', html=html_content, js_api=Api())
 
-menu_window = webview.create_window('Enzyklopädie-Expedition', html=menu_html, js_api=Api(), width=screen.width*0.5, height=screen.height, x=0, y=0)
+menu_window = webview.create_window('Enzyklopädie-Expedition', html=menu_html, js_api=Api())
 
 
 

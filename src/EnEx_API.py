@@ -48,7 +48,7 @@ def _get_eingehende_links(name: str):
     params = {
 	"action": "query",
 	"format": "json",
-	"prop": "links",
+	"prop": "linkshere",
 	"titles": name,
 	"formatversion": "2",
 	"lhlimit": "max"
@@ -83,7 +83,7 @@ def _get_ausgehende_links(name: str):
     params = {
 	"action": "query",
 	"format": "json",
-	"prop": "linkshere",
+	"prop": "links",
 	"titles": name,
 	"formatversion": "2",
 	"pllimit": "max"

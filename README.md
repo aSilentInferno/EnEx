@@ -27,7 +27,7 @@ Abhängig von den Spielregeln, die du vor dem Spielen ausgewählt hast, beginnst
 
 <!-- TOC --><a name="ui-explanation"></a>
 ### Erklärung der UI
-Links ist das Menü, rechts ist der Webviewer, in dem die Wikipedia-Seiten angezeigt werden. 
+Vorne ist das Menü, dahinter ist der Webviewer, in dem die Wikipedia-Seiten angezeigt werden. 
 
 <!-- TOC --><a name="how-to-install"></a>
 ## Installationsanleitung
@@ -36,7 +36,6 @@ Bitte stellen Sie sicher, dass folgende packages (bspw. mit pip) installiert sin
 - PyQt5
 - dotenv
 - requests
-- screeninfo
 
 Anschließend führen Sie bitte die Datei [gui.py](src/gui.py) aus. Alles weitere finden Sie auf den sich öffnenden Fenstern. 
 
