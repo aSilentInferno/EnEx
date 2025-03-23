@@ -148,7 +148,7 @@ menu_html = """
 </head>
 <body>
     <h1>Enzyklopädie-Expedition</h1>
-    <button onclick="starteSpiel()">Starte das Spiel</button>
+    <button onclick="starteSpiel()">Starte das Spiel</button> <p>Drücke den Button, um das Spiel zu starten. Bitte minimiere anschließend dieses Fenster, da sich das Spiel dahinter versteckt. </p>
     <br><br>
     <p>Solltest du anstatt zufällig ausgewählter Start- und Zielseiten selber welche auswählen wollen, gib bitte unten die Titel dieser Seiten ein. </p>
     <input type="text" id = "startInput" placeholder="Titel für den Start" style="width: 300px;">
