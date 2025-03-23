@@ -77,5 +77,5 @@ html_content = """
 
 wiki_window = webview.create_window('HTML Viewer', html=html_content, js_api=Api())
 
-def start_game():
+def starte_Spiel():
     webview.start()
