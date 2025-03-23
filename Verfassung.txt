@@ -17,9 +17,7 @@ Clemens: 	Rest (übrige Spielfunktionen, logische Funktionen, Pfaddiagramm)
 
 Clemens: Counter, Pfaddiagramm, (Timer)
 
-
-
-
+Aus innerbetrieblichen Gründen haben Noah und Kai größtenteils die Teile von Moritz und Clemens übernommen. Hierbei hat Kai hauptsächlich an Moritz' Aufgaben und Noah an denen von Clemens gearbeitet. 
 
 Allgemeine Beschreibung:
 

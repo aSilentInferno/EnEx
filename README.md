@@ -27,10 +27,17 @@ Abhängig von den Spielregeln, die du vor dem Spielen ausgewählt hast, beginnst
 
 <!-- TOC --><a name="ui-explanation"></a>
 ### Erklärung der UI
+Vorne ist das Menü, dahinter ist der Webviewer, in dem die Wikipedia-Seiten angezeigt werden. 
 
 <!-- TOC --><a name="how-to-install"></a>
 ## Installationsanleitung
-TODO
+Bitte stellen Sie sicher, dass folgende packages (bspw. mit pip) installiert sind: 
+- pywebview
+- PyQt5
+- dotenv
+- requests
+
+Anschließend führen Sie bitte die Datei [gui.py](src/gui.py) aus. Alles weitere finden Sie auf den sich öffnenden Fenstern. 
 
 <!-- TOC --><a name="lorem-ipsum-for-good-measure"></a>
 ## lorem ipsum for good measure
