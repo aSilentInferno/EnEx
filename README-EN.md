@@ -28,10 +28,18 @@ Depending on the game rules you selected prior to playing, you either start with
 
 <!-- TOC --><a name="ui-explanation"></a>
 ### UI Explanation
+On the left is the menu, and on the right is the web viewer where the Wikipedia pages are displayed.
 
 <!-- TOC --><a name="how-to-install"></a>
 ## How to Install
-TODO
+Please ensure that the following packages are installed (e.g., using pip):
+- pywebview
+- PyQt5
+- dotenv
+- requests
+- screeninfo
+
+Afterwards, please execute the file [gui.py](src/gui.py). Further instructions can be found in the windows that open.
 
 <!-- TOC --><a name="lorem-ipsum-for-good-measure"></a>
 ## lorem ipsum for good measure
