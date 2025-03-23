@@ -111,3 +111,19 @@ def get_wiki_links(name: str):
     wiki.eingehende_links = _get_eingehende_links(name)
     wiki.ausgehende_links = _get_ausgehende_links(name)
     return wiki
+
+def get_zufällige_seite():
+    """
+    Holt den Namen einer zufälligen Wikipedia-Seite mittels einer API-Anfrage.
+
+    :return: Der Name der zufälligen Wikipedia-Seite.
+    """
+    url = 'https://de.wikipedia.org/w/api.php'
+    params = {
+	"action": "query",
+	"format": "json",
+	"list": "random",
+	"formatversion": "2"
+    }
+    response = requests.get(url, params=params).json()
+    return response["query"]["random"][0]["title"]
