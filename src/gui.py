@@ -34,7 +34,7 @@ class Api:
         
 def reload_link(url): 
     link = get_wiki_inhalt(url)  # die URL kürzen, damit get_wiki_inhalt funktioniert
-    window.load_html(html_content.replace(start.inhalt, link.inhalt))  # Lade die URL im gleichen Fenster
+    wiki_window.load_html(html_content.replace(start.inhalt, link.inhalt))  # Lade die URL im gleichen Fenster
 
 
 script = """
@@ -75,7 +75,7 @@ html_content = """
 </html>
 """
 
-window = webview.create_window('HTML Viewer', html=html_content, js_api=Api())
+wiki_window = webview.create_window('HTML Viewer', html=html_content, js_api=Api())
 
 def start_game():
     webview.start()
